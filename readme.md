@@ -10,6 +10,6 @@ Here are just game sources. We cannot distribute Impact sources, it is a paid li
 
 * [darwin](/darwin) - Antonin Hildebrand
 * [raist](http://raist.cz) - Petr Stastny
-* Martin93
+* [Martin93](http://globalgamejam.org/users/martin93) - Martin Jablečník 
 
 #### License: [CC as required by GameJam rules](dino/raw/master/license.txt)
