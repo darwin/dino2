@@ -3,14 +3,19 @@
 <head>
 	<title>Neverending Story - GameJam Prague 2012 - powered by ImpactJS</title>
 	<style type="text/css">
-		html,body {
-			background-color: #000;
-			color: #fff;
-			font-family: helvetica, arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			font-size: 12pt;
-        }
+	html,body {
+		background-color: #000;
+		color: #fff;
+		font-family: arial, sans-serif;
+		margin: 0;
+		padding: 0;
+		font-size: 10px;
+		text-align: center;
+	}
+	
+	a {
+		color: #aaf;
+	}
 		
 		#canvas {
 			position: absolute;
@@ -63,11 +68,62 @@
 			color: #ddf;
 		}
 		
+
+		
+		.desc {
+			margin-top: 10px;
+		}
+		
+		.plot {
+			margin-top: 10px;
+			font-size: 12px;
+		}
+		
+		.tagline {
+			color: #faa;
+			font-size: 14px;
+		}		
+		
 	</style>
 
-	<script type="text/javascript" src="game.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        // define dummy replacements for firebug functionality (needed for Opera)
+        if (window.opera && !window.console) {
+            window.console = {};
+            function fn() {
+                opera.postError(arguments);
+            };
+            ['log', 'debug', 'info', 'warn', 'error', 'assert', 'dir', 'dirxml', 'group', 'groupEnd', 
+            'time', 'timeEnd', 'count', 'trace', 'profile', 'profileEnd'].forEach(function(name) {
+                window.console[name] = fn;
+            });
+        }            
+        (function() {
+                var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml", "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+                if(!window.console){
+                    window.console = {};
+                }
+                for (var i in names) {
+                    window.console[names[i]] = window.console[names[i]] || function(){
+                        return;
+                    };
+                }
+        })();
+    </script>
+    <script type="text/javascript" src="game.min.js"></script>
 </head>
 <body>
+	<div id="explanation">
+		<div class="desc">
+			Our <a href="http://globalgamejam.org/2012/neverending-story">GameJam 2012 contribution</a>. A javascript game made in less than 48 hours.</br>
+			It should run fine in Safari, Chrome, Firefox and Opera
+		</div>
+		<div class="plot">
+            A female dino lives on planet with very fast time. She has just few moments, to lay eggs on safe places. When she dies, a newborn comes - to continue playing the level, to live the life.
+            <br><br>
+            Run to the right, select a safe place, and lay down an egg, then run to the right. If you die, your last egg is selected and you can run to the right again :)		</div>
+	</div>
 	<div id="splashbox">
 		<div id="splash" onclick="tryLaunchGame();"></div>
 	</div>
