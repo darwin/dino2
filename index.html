@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Neverending Story - GameJam Prague 2012 - powered by ImpactJS</title>
+	<style type="text/css">
+		html,body {
+			background-color: #000;
+			color: #fff;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+        }
+		
+		#canvas {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+		}
+
+		#splash {
+			position: absolute;
+			width: 960px;
+			height: 480px;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+			background-image: url('media/ns-intro-img.gif');
+		}
+
+		#outro {
+			position: absolute;
+			width: 960px;
+			height: 480px;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+			background-image: url('media/ns-outro-img.gif');
+		}
+		
+		#gamebox {
+			display: none;
+		}
+		
+		.hint {
+			margin-top: 10px;
+			text-align: center;
+			color: #eee;
+			display: none;
+		}
+		
+		.hint a {
+			color: #ddf;
+		}
+		
+	</style>
+
+	<script type="text/javascript" src="game.min.js"></script>
+</head>
+<body>
+	<div id="splashbox">
+		<div id="splash" onclick="tryLaunchGame();"></div>
+	</div>
+	
+	<div id="gamebox">
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<div id="outrobox">
+		<div id="outro" style="display:none"></div>
+	</div>
+	
+	<script type="text/javascript" charset="utf-8">
+		window.tryLaunchGame = function() {
+			if (window.gameLauncher) {
+				window.gameLauncher();
+			}
+		};
+
+		window.addEventListener('keydown', function() {
+			tryLaunchGame();
+		}, false );
+		
+		var launched = false;
+		window.gameLauncher = function() {
+			if (launched) return;
+			document.getElementById('splashbox').style.display = "none";
+			document.getElementById('gamebox').style.display = "block";
+		    ig.main( '#canvas', game, 60, 480, 240, 2 );
+			launched = true;
+		}
+		
+		window.displayOutro = function() {
+		    document.getElementById("outro").style.display = "block";
+		}
+	</script>
+</body>
+</html>
